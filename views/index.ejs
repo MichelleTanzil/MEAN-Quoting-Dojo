@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+    integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <title>Quoting Dojo</title>
+</head>
+
+<body>
+  <h1 class="text-center mt-3 mb-3">Welcome to Quoting Dojo</h1>
+  <!-- tip to easily see objects printed in full instead of [object Object] -->
+  <% JSON.stringify(messages) %>
+  <!-- based on the structure of your messages, determine how to display them -->
+  <% if(messages.new_quote) { %>
+  <% for (var x of messages.new_quote) { %>
+  <p class="text-danger"><%= x %></p>
+  <% } %>
+  <% } %>
+  <form action="/quotes" method="post">
+    <div class="form-group">
+      <label for="name">Your Name: </label>
+      <input type="text" class="form-control" name="name">
+    </div>
+    <div class="form-group">
+      <label for="quote">Your quote: </label>
+      <textarea class="form-control" name="quote" cols="30" rows="10"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add my quote!</button>
+  </form>
+  <br/>
+  <a href="/quotes" class="btn btn-success">Skip to quotes!</a>
+</body>
+
+</html>
